@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,6 +8,9 @@
 
   <body>
     <h1>Hi, this is the index</h1>
-    {{ dynamic_content }}
+    <p>{{ dynamic_content }}</p>
+
+    <h2>And this is a Tiger Duck</h2>
+    <img src="{% static 'images/tiger_duck.jpg' %}" alt="Tiger Duck" />
   </body>
 </html>
