@@ -3,13 +3,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Second Project</title>
+    <title>Django Level Two</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 
   <body>
     <h1>Hi, this is the index</h1>
-    <p>{{ dynamic_content }}</p>
+    <p>Here are the access records:</p>
+
+    <div class="django-two">
+      {% if access_records %}
+        <table>
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Date Accessed</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for record in access_records %}
+              <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.date }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No access records found.</p>
+      {% endif %}
+    </div>
 
     <h2>And this is a Tiger Duck</h2>
     <img src="{% static 'images/tiger_duck.jpg' %}" alt="Tiger Duck" />

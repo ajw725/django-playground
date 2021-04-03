@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from second_app.models import Topic, Webpage, AccessRecord
 
 
 def index(request):
-    view_data = {'dynamic_content': 'This is dynamic content!'}
-    return render(request, 'second_app/index.html', view_data)
+    pages = AccessRecord.objects.order_by('date')
+    date_dict = {'access_records': pages}
+    return render(request, 'second_app/index.html', context=date_dict)
 
 
 def pageone(request):
