@@ -7,7 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'second_project.settings')
 import django
 django.setup()
 
-from second_app.models import User
+from users.models import User
 
 generator = Faker()
 

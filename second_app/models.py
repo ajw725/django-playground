@@ -32,15 +32,3 @@ class AccessRecord(Model):
 
     def __str__(self):
         return str(self.date)
-
-
-class User(Model):
-    first_name = models.CharField(max_length=256)
-    last_name = models.CharField(max_length=256)
-    email = models.EmailField(unique=True)
-
-    def name(self):
-        return f'{self.first_name} {self.last_name} ({self.email})'
-
-    def __str__(self):
-        return self.name()

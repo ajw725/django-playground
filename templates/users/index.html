@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  </head>
+
+  <body>
+    <h1>Hi, this is the users index</h1>
+    <p>
+      <a href="{% url 'new' %}">Click here</a>
+      to create a new user.
+    </p>
+    <p>Here are the users:</p>
+
+    <div class="border-table">
+      {% if users %}
+        <table>
+          <thead>
+            <tr>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for user in users %}
+              <tr>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.email }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No users found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
