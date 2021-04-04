@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from second_app.models import AccessRecord, User
+from . import forms
 
 
 def index(request):
@@ -10,8 +11,16 @@ def index(request):
 
 
 def users(request):
-    users = User.objects.order_by('last_name', 'first_name')
-    ctx = {'users': users}
+    form = forms.UserForm
+
+    if request.method == 'POST':
+        form = forms.UserForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            print('User created!')
+            return index(request)
+
+    ctx = {'form': form}
     return render(request, 'second_app/users.html', context=ctx)
 
 
