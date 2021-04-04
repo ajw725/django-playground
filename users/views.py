@@ -8,7 +8,7 @@ from . import forms
 
 def index(request):
     users_list = User.objects.order_by('last_name', 'first_name')
-    ctx = {'users': users_list}
+    ctx = {'users': users_list, 'text': 'remove hi me hi'}
     return render(request, 'users/index.html', context=ctx)
 
 
